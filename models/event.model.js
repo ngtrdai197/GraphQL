@@ -12,6 +12,7 @@ const eventSchema = new mongoose.Schema({
     price: {
         type: String,
         required: true
-    }
+    },
+    user: { type: mongoose.Types.ObjectId, ref: 'user' }
 });
 module.exports = mongoose.model('Event', eventSchema);
