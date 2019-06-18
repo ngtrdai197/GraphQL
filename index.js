@@ -4,8 +4,12 @@ const graphqlHttp = require('express-graphql');
 const connectionDB = require('./config/mongodb');
 const schema = require('./graphql/shema');
 const resolver = require('./graphql/resolver');
+const parserMiddleware = require('./middleware');
+// parserMiddleware();
 
 const app = express();
+
+app.use(parserMiddleware);
 app.use(bodyParser.json());
 
 app.use('/graphql', graphqlHttp({

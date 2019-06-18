@@ -12,7 +12,13 @@ module.exports = buildSchema(`
         title: String!
         description: String!
         price: Float!
-        user: String!
+        user: User
+    }
+
+    type Auth{
+        user: String,
+        token: String,
+        expiresIn: String
     }
 
     input EventInput{
@@ -21,14 +27,18 @@ module.exports = buildSchema(`
         price: Float!
         user: String!
     }
+
     input UserInput{
         username: String!
         password: String!
     }
 
     type RootQuery{
-        events: [Event!]!
-        users: [User!]!
+        findAllEvent: [Event!]!
+        findAllUser: [User!]!
+        findByIdUser(id: String!): User!
+        findByIdEvent(id: String!): Event!
+        login(username: String, password: String): Auth!
     }
 
     type RootMutation{
