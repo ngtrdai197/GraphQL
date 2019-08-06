@@ -1,15 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const graphqlHttp = require('express-graphql');
-const connectionDB = require('./config/mongodb');
+const databaseConnection = require('./config/mongodb');
 const schema = require('./graphql/shema');
 const resolver = require('./graphql/resolver');
 const parserMiddleware = require('./middleware');
-// parserMiddleware();
 
 const app = express();
 
-app.use(parserMiddleware);
+// app.use(parserMiddleware);
 app.use(bodyParser.json());
 
 app.use('/graphql', graphqlHttp({
@@ -23,6 +22,6 @@ app.get("/", (req, res) => {
 })
 
 app.listen(3000, () => {
-	connectionDB;
-	console.log('Server is starting at port: 3000');
+	databaseConnection();
+	console.log('Server is starting at port: 3000 🚀 🚀 🚀');
 });

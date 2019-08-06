@@ -16,7 +16,7 @@ module.exports = buildSchema(`
     }
 
     type Auth{
-        user: String,
+        username: String,
         token: String,
         expiresIn: String
     }
